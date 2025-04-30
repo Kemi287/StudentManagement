@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Student List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Roll Number</th>
+                <th>Gender</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student[0] }}</td> <!-- Assuming first name is in the first column -->
+                <td>{{ student[1] }}</td> <!-- Last name in the second column -->
+                <td>{{ student[2] }}</td> <!-- Roll number in the third column -->
+                <td>{{ student[3] }}</td> <!-- Gender in the fourth column -->
+                <td><a href="{{ url_for('delete_student', roll_number=student[2]) }}" class="delete-button">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Link to go back to the student entry form -->
+    <br>
+    <a href="{{ url_for('index') }}">Back to Student Entry</a>
+</body>
+</html>
