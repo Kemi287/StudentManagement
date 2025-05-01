@@ -42,12 +42,7 @@ def index():
                 conn.commit()
                 flash('Student added successfully!', 'success')
 
-    # Fetch the list of students from the database
-    cursor = conn.cursor()
-    cursor.execute("SELECT FirstName, LastName, RollNumber, Gender FROM Student")
-    students = cursor.fetchall()
-
-    return render_template('form.html', students=students)
+    return render_template('form.html')
 
 # Route for displaying the student list
 @app.route('/students')
